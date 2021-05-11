@@ -9,7 +9,7 @@ namespace ArtSupplies.Data.Entities
     public enum OrderStatus
     {
         New,
-        Shipped,
+        Payed,
         Delivered
     }
 }

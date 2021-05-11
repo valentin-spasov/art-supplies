@@ -96,6 +96,7 @@ namespace ArtSupplies.Controllers
             try
             {
                 var location = _linkGenerator.GetPathByAction("GetCustomer", "Customers", new { customerId = customerModel.CustomerId });
+
                 if (string.IsNullOrEmpty(location))
                 {
                     return BadRequest("Could not use current customer id");
@@ -103,6 +104,7 @@ namespace ArtSupplies.Controllers
 
                 var customer = _mapper.Map<Customer>(customerModel);
                 _customerRepository.AddCustomer(customer);
+
                 if (await _customerRepository.SaveChangesAsync())
                 {
                     return Created(location, _mapper.Map<CustomerModel>(customer));
